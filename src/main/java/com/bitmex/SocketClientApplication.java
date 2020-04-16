@@ -10,6 +10,7 @@ public class SocketClientApplication {
 
   public static void main(String[] args) {
 
+//    https://dzone.com/articles/sample-java-web-socket-client googled from here
     WebSocketContainer container;
     Session session = null;
 
