@@ -1,0 +1,43 @@
+@keyframes highlight {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: dodgerblue;
+  }
+}
+
+@keyframes highlight-add {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: green;
+  }
+}
+
+@keyframes highlight-remove {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: red;
+  }
+}
+
+
+.highlight {
+  animation-name: highlight;
+  animation-duration: 3s;
+}
+
+
+.highlight-add {
+  animation-name: highlight-add;
+  animation-duration: 3s;
+}
+
+.highlight-remove {
+  animation-name: highlight-remove;
+  animation-duration: 3s;
+}
