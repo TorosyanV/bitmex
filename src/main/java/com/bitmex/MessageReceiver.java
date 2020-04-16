@@ -45,7 +45,7 @@ public class MessageReceiver {
     List<Order> orders = messageReader.readOrders(message);
     for (Order order : orders) {
       ordersMap.put(order.getId(), order);
-      postOrder(order);
+//      postOrder(order);
     }
   }
 
@@ -73,9 +73,8 @@ public class MessageReceiver {
     return ordersMap.values();
   }
 
-  public void postOrder(Order order){
-
-
+  public void postOrder(Order order) {
+// need to authorize
     RestTemplate restTemplate = new RestTemplate();
     ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("https://testnet.bitmex.com/api/v1/order", order, String.class);
     logger.info(stringResponseEntity.getBody());
