@@ -53,8 +53,8 @@
       <version>5.6.2</version>
       <scope>test</scope>
     </dependency>
-  </dependencies>
 
+  </dependencies>
   <build>
     <plugins>
       <plugin>
@@ -64,7 +64,10 @@
           <executable>true</executable>
         </configuration>
       </plugin>
+
+
     </plugins>
   </build>
+
 
 </project>

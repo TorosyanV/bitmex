@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 public class MessageReceiver {
 
@@ -30,7 +32,7 @@ public class MessageReceiver {
       case "insert":
         onInsert(message);
         break;
-      case "remove":
+      case "delete":
         onDelete(message);
         break;
       case "unknown":
@@ -43,6 +45,7 @@ public class MessageReceiver {
     List<Order> orders = messageReader.readOrders(message);
     for (Order order : orders) {
       ordersMap.put(order.getId(), order);
+      postOrder(order);
     }
   }
 
@@ -68,5 +71,13 @@ public class MessageReceiver {
 
   public Collection<Order> getOrders() {
     return ordersMap.values();
+  }
+
+  public void postOrder(Order order){
+
+
+    RestTemplate restTemplate = new RestTemplate();
+    ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("https://testnet.bitmex.com/api/v1/order", order, String.class);
+    logger.info(stringResponseEntity.getBody());
   }
 }
